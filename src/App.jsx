@@ -1,8 +1,13 @@
 import React from 'react';
-import './App.css';
+import LaunchList from './components/LaunchList';
+import './assets/scss/styles.scss';
 
-function App() {
-  return <div className="App">Start coding!!!</div>;
-}
+const App = () => {
+  return (
+    <div>
+      <LaunchList />
+    </div>
+  );
+};
 
 export default App;
