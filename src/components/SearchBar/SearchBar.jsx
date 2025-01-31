@@ -1,34 +1,28 @@
-// SearchBar.js
+// src/components/SearchBar/SearchBar.js
 import React, { useState } from 'react';
-import launchService from '../../services/launchService';
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [query, setQuery] = useState('');
 
-  const handleSearch = async (event) => {
-    if (event.code === 'Enter') {
-      event.preventDefault();
-      try {
-        const data = await launchService.searchLaunches(searchTerm);
-        onSearch(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+  const handleSearch = (e) => {
+    e.preventDefault();
+    onSearch(query);
   };
 
   return (
-    <div className="container">
-      <form className="search">
-        <input
-          type="search"
-          value={searchTerm}
-          onChange={(event) => setSearchTerm(event.target.value)}
-          placeholder="Search by mission name..."
-          onKeyDown={handleSearch}
-        />
-      </form>
-    </div>
+    <form className="search" onSubmit={handleSearch}>
+      <input
+        type="search"
+        placeholder="Search launches..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSearch();
+          }
+        }}
+      />
+    </form>
   );
 };
 

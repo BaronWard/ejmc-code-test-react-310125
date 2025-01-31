@@ -16,7 +16,7 @@ const LaunchListElement = ({ launch }) => {
               launch.upcoming ? 'launch__upcoming-label--success' : 'launch__upcoming-label--info'
             }`}> Upcoming</span>
       </h2>
-      <button className="launch__view-button btn--primary " onClick={handleViewClick}>
+      <button className="launch__view-button btn btn--primary " onClick={handleViewClick}>
         {showDetails ? 'Hide' : 'View'}
       </button>
       {showDetails && (
